@@ -1,0 +1,41 @@
+COLLECTION,GENERICS,STREAM:
+
+3.1 Student Score storage
+
+BEGIN
+    CREATE HashMap scores<String, Integer>
+    INSERT ("Aman", 85)
+    INSERT ("Riya", 92)
+    INSERT ("Karan", 76)
+    INSERT ("Meena", 95)
+
+    topScorer = find entry with maximum value from scores
+
+    PRINT "Highest Scorer: " + topScorer.key + " with " + topScorer.value + " marks"
+END
+
+3.2 Employee Record Keeper
+
+CLASS Employee
+    ATTRIBUTES: name, department
+    CONSTRUCTOR(name, department)
+        set name and department
+    METHOD getName()
+        return name
+    METHOD getDepartment()
+        return department
+
+BEGIN
+    CREATE ArrayList employees
+
+    ADD new Employee("Raj", "IT")
+    ADD new Employee("Simran", "HR")
+    ADD new Employee("Amit", "IT")
+    ADD new Employee("Neha", "Finance")
+
+    itEmployees = filter employees where department == "IT"
+
+    PRINT "Employees in IT Department:"
+    FOR each employee in itEmployees
+        PRINT employee.name
+END

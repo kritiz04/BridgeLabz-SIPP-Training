@@ -1,0 +1,38 @@
+DATA STRUCTURE:
+
+2.1 Undo Feature in Text Editor
+
+class TextEditor
+   attribute: stack of operations
+   methods type(text)
+      push text into stack
+      print "typed: text"
+ 
+   method undo()
+	if stack is not empty
+	   lastOperation = pop from stack
+	   print "last operation removed"
+	else
+	   print "noting to undo"
+
+2.2 Call Center queue management
+
+class CallCenter
+    attributes: emergencyQueue, normalQueue
+
+    method addCustomer(name, type)
+        IF type == "emergency"
+            enqueue name into emergencyQueue
+        ELSE
+            enqueue name into normalQueue
+        print "Added name to type queue"
+
+    method serveCustomer()
+        IF emergencyQueue is not empty
+            customer = dequeue from emergencyQueue
+        ELSE IF normalQueue is not empty
+            customer = dequeue from normalQueue
+        ELSE
+            print "No customers waiting"
+            RETURN
+        print "Serving: customer"
