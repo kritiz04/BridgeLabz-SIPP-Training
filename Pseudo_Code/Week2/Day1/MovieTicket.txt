@@ -1,0 +1,31 @@
+CLASS Ticket
+    ATTRIBUTES: movieName, seatNumber, price, status
+    METHOD showTicket()
+
+CLASS Theatre
+    ATTRIBUTES: movieSchedule, availableSeats, issuedTickets
+    METHOD issueTicket(customer, movie, seat)
+        IF seat is available
+            CREATE new Ticket
+            ADD ticket to issuedTickets
+            UPDATE seat as booked
+        ELSE
+            PRINT "Seat not available"
+
+    METHOD cancelTicket(ticket)
+        UPDATE seat as available
+        REMOVE ticket from issuedTickets
+
+CLASS Customer
+    ATTRIBUTES: name
+    METHOD bookTicket(theatre, movie, seat)
+        CALL theatre.issueTicket(this, movie, seat)
+
+    METHOD cancelTicket(theatre, ticket)
+        CALL theatre.cancelTicket(ticket)
+
+MAIN
+    theatre = Theatre()
+    customer = Customer("Ravi")
+    ticket1 = customer.bookTicket(theatre, "Avengers", "A12")
+    customer.cancelTicket(theatre, ticket1)

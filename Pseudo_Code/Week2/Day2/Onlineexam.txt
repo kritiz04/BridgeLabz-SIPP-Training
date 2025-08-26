@@ -1,0 +1,27 @@
+CLASS User
+    ATTRIBUTES: username, password
+    METHOD login()
+        PRINT "Base login - override in subclasses"
+
+CLASS Student EXTENDS User
+    ATTRIBUTES: enrolledCourses
+    METHOD login()
+        IF valid(username, password) AND enrolledCourses is not empty
+            PRINT "Student logged in → Show exams"
+        ELSE
+            PRINT "Student login failed"
+
+CLASS Admin EXTENDS User
+    ATTRIBUTES: adminPrivileges
+    METHOD login()
+        IF valid(username, password) AND adminPrivileges == true
+            PRINT "Admin logged in → Show exam management tools"
+        ELSE
+            PRINT "Admin login failed"
+
+MAIN
+    student = Student("john123","pwd123",["Math"])
+    admin = Admin("admin01","adminpwd",true)
+
+    student.login()
+    admin.login()

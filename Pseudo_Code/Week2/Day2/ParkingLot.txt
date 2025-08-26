@@ -1,0 +1,31 @@
+CLASS Vehicle
+    ATTRIBUTES: vehicleNumber, entryTime
+    METHOD calculateFee(exitTime)
+        PRINT "Default fee"
+
+CLASS Car EXTENDS Vehicle
+    METHOD calculateFee(exitTime)
+        hours = exitTime - entryTime
+        fee = 50 + (hours-1)*30
+        RETURN fee
+
+CLASS Bike EXTENDS Vehicle
+    METHOD calculateFee(exitTime)
+        hours = exitTime - entryTime
+        fee = 20 + (hours-1)*10
+        RETURN fee
+
+CLASS Truck EXTENDS Vehicle
+    METHOD calculateFee(exitTime)
+        hours = exitTime - entryTime
+        fee = 100 + (hours-1)*50
+        RETURN fee
+
+MAIN
+    car = Car("KA05AB1234", 10:00)
+    bike = Bike("KA05XY7890", 11:15)
+    truck = Truck("KA09TR5566", 09:30)
+
+    PRINT car.calculateFee(13:30)   // 125
+    PRINT bike.calculateFee(12:00) // 30
+    PRINT truck.calculateFee(14:00)// 325

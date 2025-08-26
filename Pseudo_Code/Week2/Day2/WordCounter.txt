@@ -1,0 +1,15 @@
+CLASS WordCounter
+    METHOD countWords(text)
+        words = split text by spaces
+        CREATE Map<String,Integer> wordCount
+        FOR word in words
+            word = lowercase(word)
+            word = remove punctuation
+            wordCount[word]++
+        SORT wordCount by value (descending)
+        PRINT wordCount
+
+MAIN
+    text = "Sports bring people together. Sports inspire teamwork. Sports create leaders."
+    WordCounter.countWords(text)
+    // Sports=3, bring=1, people=1, together=1, inspire=1, teamwork=1, create=1, leaders=1
